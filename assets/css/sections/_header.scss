@@ -1,0 +1,156 @@
+
+.Header {
+
+/* 
+
+this places the header text right in the middle, if _grid and nav are removed;
+used for the header share pic
+
+    text-align: left;
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+    font-size: 80px;
+    line-height: calc(70px * 1.2);
+    padding-top: 110px;
+
+ */
+
+
+  position: relative;
+  z-index: 1000;
+  // give a lot more space to links
+  max-width: $width-lg-min;
+
+  // mobile screen means no --top, no sticky rules
+  // also means a more opaque background
+  @include screen-xs {
+    padding: $size/2;
+    background: usetheme(header-bg-scroll) !important;
+    top: 0 !important;
+  }
+
+  @include screen-sm {
+    padding-left: $size-2;
+    padding-right: $size-2;
+    padding-bottom: $size/2;
+  }
+
+  // what's the nav look like when it's affixed to the top
+  &.--top {
+    background-color: usetheme(header-bg-top);
+    @extend %ease;
+
+    @include screen-sm {
+      padding-top: $size;
+    }
+  }
+
+  // what's the nav look like when scrolling
+  // &.--scroll {
+  padding-top: $size/2;
+  background-color: usetheme(header-bg-scroll);
+  @extend %ease;
+  // }
+
+
+  &.--fixed {
+    @include screen-sm {
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  .Header-content {
+    @include screen-sm {
+      // @include gridAutoCols(2);
+    }
+  }
+
+  a {
+    &, &:active &:visited{
+      color: usetheme(header-links);
+    }
+    // font-size: $size-larger;
+    text-decoration: none;
+    // margin-right: $size;
+    // padding-top: $size/2;
+    // padding-bottom: $size/2;
+    white-space: nowrap;
+
+    @include screen-xs {
+      display: inline-block;
+    }
+
+    @include screen-sm {
+      // margin-left: $size;
+      // font-size: usetheme(font-large), // $font-large;
+      font-size: usetheme(nav-size); // $font-large;
+    }
+    &:hover {
+      color: usetheme(header-active);
+      text-decoration: underline;
+    };
+  }
+  .nuxt-link-exact-active,
+  .nuxt-link-active {
+    // @extend %links-bg;
+    @extend %font-bold;
+    color: usetheme(header-active);
+  }
+  .Header-orgs.nuxt-link-active {
+    // @extend %links-bg;
+    @extend %font-bold;
+    color: usetheme(header-active);
+  }
+
+  .Header-search {
+    border: $border-thin solid usetheme(header-search-bg); //;$color-ui-light;
+    border-radius: $radius;
+    // max-width: 110px; // gives the links to the right more space
+    // min-width: 120px;
+    // max-width: 400px;
+    // flex-basis: auto; /* default value */
+    // flex-grow: 1;
+
+    // this works better than flex-grow!
+    min-width: 80px;
+    width: 100%;
+
+    background-color: usetheme(header-search-bg);
+
+    @extend %ease;
+    &:hover {
+      border-color: usetheme(active); //$color-tertiary;
+    }
+    &:focus {
+      border: $border-thin solid usetheme(active); //$color-tertiary;
+      padding: $size-half $size-base;
+      @extend %ease;
+    }
+
+    @include screen-xs {
+      display: none;
+    }
+    
+  }
+
+
+  // header link
+  .Header-logo-link {
+    &:after {
+      content: none !important;
+    }
+  }
+
+  .Header-title {
+    // @extend ._font-coffee;
+    font-size: usetheme(size-title);
+    line-height: usetheme(lineheight-title);
+    color: usetheme(title-color);
+    text-decoration: none !important;
+    font-weight: 400;
+  }
+}
+

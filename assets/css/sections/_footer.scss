@@ -1,0 +1,32 @@
+
+
+.Footer {
+  background-color: usetheme(footer-bg);
+  color: usetheme(footer-copy);
+  
+  // span {
+  //   white-space: nowrap;
+  // }
+
+  a {
+    // text-decoration: none;
+    color: usetheme(footer-links); //$color-bg;
+    border: 0;
+    line-height: $size-3;
+    // font-weight: bold;
+    &:hover {
+      color: usetheme(footer-active); //$color-phdir;
+      text-decoration: underline;
+    }
+  }
+  .nuxt-link-exact-active, 
+  .nuxt-link-active {
+    // @extend %links-bg;
+    @extend %font-bold;
+  }
+  .Footer-right,
+  .Footer-top {
+    // margin-right: $size-8;
+  }
+
+}
